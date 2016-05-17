@@ -16,7 +16,21 @@ MoMEMta is based on:
 
 # Get MoMEMta
 
-Blabla
+## Install from source
+
+You can get the latest release of MoMEMta on [our github repository](https://github.com/MoMEMta/MoMEMta/releases). We use `cmake` as our build system.
+
+The following set of commands is usually enough to build MoMEMta:
+
+```
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
+Find more details [here](https://github.com/MoMEMta/MoMEMta/blob/prototype/README.md#install).
 
 # Documentation
 

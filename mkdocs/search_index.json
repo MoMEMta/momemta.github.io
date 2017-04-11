@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "The MoMEMta project\n\n\n\n\nMoMEMta\n is a C++ software package to compute Matrix Element weights. Designed in a modular way, it covers the needs of experimental analysis workflows at the LHC. MoMEMta provides working examples for the most common final states (\n\\text{t}\\bar{\\text{t}}\n, WW, \u2026). If you are an expert user, be prepared to feel the freedom of configuring your MEM computation at all levels.\n\n\nMoMEMta is based on:\n\n\n\n\nC++, \nROOT\n, \nLua\n scripting language\n\n\nCuba\n (Monte-Carlo integration library)\n\n\nExternal PDFs (\nLHAPDF\n by default)\n\n\nExternal Matrix Elements (currently provided by our MadGraph C++ \nexporter plugin\n)\n\n\n\n\nYou will probably want to start with our \ngetting started guide\n.\n\n\nOur team\n\n\n\n\nS\u00e9bastien Brochet\n\n\nAlessia Saggio\n\n\nMiguel Vidal\n\n\nS\u00e9bastien Wertz\n\n\n\n\nSpecial thanks to Matthias Komm who designed our logo!", 
+            "text": "The MoMEMta project\n\n\n\n\nMoMEMta\n is a C++ software package to compute Matrix Element weights. Designed in a modular way, it covers the needs of experimental analysis workflows at the LHC. MoMEMta provides working examples for the most common final states (\n\\text{t}\\bar{\\text{t}}\n, WW, \u2026). If you are an expert user, be prepared to feel the freedom of configuring your MEM computation at all levels.\n\n\nMoMEMta is based on:\n\n\n\n\nC++, \nROOT\n, \nLua\n scripting language\n\n\nCuba\n (Monte-Carlo integration library)\n\n\nExternal PDFs (\nLHAPDF\n by default)\n\n\nExternal Matrix Elements (currently provided by our MadGraph C++ \nexporter plugin\n)\n\n\n\n\nYou will probably want to start with our \ngetting started guide\n.\n\n\nOur team\n\n\n\n\nS\u00e9bastien Brochet\n\n\nAlessia Saggio\n\n\nMiguel Vidal\n\n\nS\u00e9bastien Wertz\n\n\n\n\nSpecial thanks to Matthias Komm who designed our logo!\n\n\nAcknowledgements\n\n\nThis work would not have been possible without the help of the MadWeight team and funding of:\n\n\n\n    \n\n    \n\n    \n\n    \n\n    \n\n\n\n\n\nMoMEMta is part of a project that has received funding from the European Horizon 2020 research and innovation programme under grant agreement N\u00b0675440.", 
             "title": "The MoMEMta project"
         }, 
         {
@@ -14,6 +14,11 @@
             "location": "/#our-team", 
             "text": "S\u00e9bastien Brochet  Alessia Saggio  Miguel Vidal  S\u00e9bastien Wertz   Special thanks to Matthias Komm who designed our logo!", 
             "title": "Our team"
+        }, 
+        {
+            "location": "/#acknowledgements", 
+            "text": "This work would not have been possible without the help of the MadWeight team and funding of:  \n     \n     \n     \n     \n       MoMEMta is part of a project that has received funding from the European Horizon 2020 research and innovation programme under grant agreement N\u00b0675440.", 
+            "title": "Acknowledgements"
         }, 
         {
             "location": "/introduction/", 
@@ -154,16 +159,6 @@
             "location": "/changelog/#v010", 
             "text": "First public release of MoMEMta. Only  t\\bar{t}  and  W^+W^-  fully-leptonic matrix elements are included in this release.", 
             "title": "v0.1.0"
-        }, 
-        {
-            "location": "/acknowledgement/", 
-            "text": "Acknowledgement\n\n\nThis work would not have been possible without the help of the MadWeight team and funding of", 
-            "title": "Acknowledgement"
-        }, 
-        {
-            "location": "/acknowledgement/#acknowledgement", 
-            "text": "This work would not have been possible without the help of the MadWeight team and funding of", 
-            "title": "Acknowledgement"
         }
     ]
 }

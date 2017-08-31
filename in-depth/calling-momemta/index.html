@@ -5,6 +5,7 @@
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Modular Matrix Element Method implementation">
       
@@ -17,7 +18,7 @@
       
         <link rel="shortcut icon" href="../../favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.1">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.1">
     
     
       
@@ -25,12 +26,12 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-56ade86843.js"></script>
+      <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-4d0d3f2fbf.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-f78e5cb881.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-02c2a4388f.palette.css">
       
     
     
@@ -45,6 +46,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/base16-eighties.dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/momemta.css">
     
     
   </head>
@@ -97,17 +100,17 @@
         
           <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
-<div class="md-search" data-md-component="search">
+<div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -119,9 +122,9 @@
 </div>
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             
 
 
@@ -141,9 +144,9 @@
     </div>
   </a>
 
-          
+          </div>
         </div>
-      </div>
+      
     </div>
   </nav>
 </header>
@@ -290,9 +293,34 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Calling MoMEMta
+      </label>
+    
     <a href="./" title="Calling MoMEMta" class="md-nav__link md-nav__link--active">
       Calling MoMEMta
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-bindings" title="Python bindings" class="md-nav__link">
+    Python bindings
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -305,6 +333,30 @@
   <li class="md-nav__item">
     <a href="../configuration-file/" title="Configuration file" class="md-nav__link">
       Configuration file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../new-module/" title="Adding a new module" class="md-nav__link">
+      Adding a new module
     </a>
   </li>
 
@@ -355,6 +407,20 @@
   
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#python-bindings" title="Python bindings" class="md-nav__link">
+    Python bindings
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -371,16 +437,17 @@
                   <h1>Calling MoMEMta</h1>
                 
                 <p>In MoMEMta, the integration is defined by linking modules together in a Lua script. MoMEMta is shipped with a set of modules covering the most common needs and whose parameters, inputs and outputs are documented <a href="https://momemta.github.io/MoMEMta/dev/group__modules.html">here</a>. For more information on how to write the configuration file, see <a href="../configuration-file/">here</a>.</p>
-<blockquote>
-<p><em>A module is just a C++ class deriving from the <code>Module</code> virtual class. How to write a new module and make it available for the calculation is described (here).</em></p>
-</blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A module is just a C++ class deriving from the <code>Module</code> virtual class. You can learn more on how to create your own module and make it available for the calculation <a href="../new-module/">here</a></p>
+</div>
 <p>Once the configuration file is defined, it can be loaded by MoMEMta’s configuration reader:</p>
 <div class="codehilite"><pre><span></span><span class="n">ConfigurationReader</span> <span class="nf">my_reader</span><span class="p">(</span><span class="s">&quot;relative_path_to_lua_file.lua&quot;</span><span class="p">);</span>
 </pre></div>
 
 
-<p>At this point, the user might wish to modify some parameters defined in the file from the code itself:</p>
-<div class="codehilite"><pre><span></span><span class="n">configuration</span><span class="p">.</span><span class="n">getGlobalParameters</span><span class="p">().</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;top_mass&quot;</span><span class="p">,</span> <span class="mf">173.</span><span class="p">);</span>
+<p>At this point, the user might wish to modify some parameters defined in the file from the code itself (see also <a href="../parameters">here</a>):</p>
+<div class="codehilite"><pre><span></span><span class="n">my_reader</span><span class="p">.</span><span class="n">getGlobalParameters</span><span class="p">().</span><span class="n">set</span><span class="p">(</span><span class="s">&quot;top_mass&quot;</span><span class="p">,</span> <span class="mf">173.</span><span class="p">);</span>
 </pre></div>
 
 
@@ -390,26 +457,64 @@
 </pre></div>
 
 
-<blockquote>
-<p><em>MoMEMta is instantiated using a <code>Configuration</code> object, describing a fixed configuration: parameters cannot be modified at this stage. Parameters can be changed in the ConfigurationReader, and a new <code>MoMEMta</code> instance must then be constructed by calling <code>ConfigurationReader::freeze()</code> again.</em></p>
-</blockquote>
-<p>The weight can finally be computed by calling the computeWeights() method of the MoMEMta object, passing the observed particles as a set of LorentzVectors:</p>
-<div class="codehilite"><pre><span></span><span class="n">LorentzVector</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">,</span> <span class="n">met</span><span class="p">;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">weight</span><span class="p">.</span><span class="n">computeWeights</span><span class="p">({</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">},</span> <span class="n">met</span><span class="p">);</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MoMEMta is instantiated using a <code>Configuration</code> object, describing a frozen configuration: parameters cannot be modified at this stage, the execution flow of the computation is fully fixed. Parameters can however be changed in the ConfigurationReader, and a new <code>MoMEMta</code> instance must then be constructed by calling <code>ConfigurationReader::freeze()</code> again.</p>
+</div>
+<p>The weight can finally be computed by calling the <a href="https://momemta.github.io/MoMEMta/dev/classMoMEMta.html#a7022a8573e8232c75cda198f59a64cbe"><code>computeWeights()</code></a> method of the MoMEMta object, passing the observed particles as arguments:</p>
+<div class="codehilite"><pre><span></span><span class="n">ROOT</span><span class="o">::</span><span class="n">Math</span><span class="o">::</span><span class="n">LorentzVector</span><span class="o">&lt;</span><span class="n">ROOT</span><span class="o">::</span><span class="n">Math</span><span class="o">::</span><span class="n">PxPyPzE4D</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">met</span><span class="p">;</span>
+<span class="n">momemta</span><span class="o">::</span><span class="n">Particle</span> <span class="n">part1</span> <span class="p">{</span> <span class="s">&quot;part1&quot;</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="n">momemta</span><span class="o">::</span><span class="n">Particle</span> <span class="n">part2</span> <span class="p">{</span> <span class="s">&quot;part2&quot;</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;&gt;</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">weight</span><span class="p">.</span><span class="n">computeWeights</span><span class="p">({</span><span class="n">part1</span><span class="p">,</span> <span class="n">part2</span><span class="p">},</span> <span class="n">met</span><span class="p">);</span>
 </pre></div>
 
 
 <div class="admonition note">
-<p>The MET is an optional argument</p>
+<p class="admonition-title">Note</p>
+<p>The MET is an optional argument (defaults to a null vector)</p>
 </div>
-<div class="admonition note">
-<p>The LorentzVectors are expected to be expressed in the <code>PxPyPzE&lt;double&gt;</code> basis</p>
-</div>
-<p>The function starts the Monte-Carlo integration: the integrand function is called a large number of times, each time passing as input a phase-space point vector (where the length of the vector is the dimensionality of the integrated phase-space) with elements lying between 0 and 1, and returning as output the integrated function evaluated on this point.</p>
-<p><code>computeWeights()</code> returns a vector of pairs (weight, uncertainty) (at the moment, this vector only has one entry) which can then be stored by the user.</p>
+<p>The <code>momemta::Particle</code> type consists of three parts: a name (string) allowing to identify the particle in the configuration file, a 4-vector object, and a type (int). The type is not used by MoMEMta at the moment, but is present for future features.</p>
 <div class="admonition tip">
-<p>The phase-space points are associated with a weight, given that they are not distributed uniformly in the phase-space, but according to the importance function defined by Vegas. In most use cases this weight is not needed by the user since Cuba automatically takes it into account when computing the integral, however it can still be retrieved through the <code>cuba::ps_weight</code> input tag (see <a href="../configuration-file/#defaults">here</a>).</p>
+<p class="admonition-title">Tip</p>
+<p>MoMEMta provides the useful typedef <code>LorentzVector</code> for Lorentz Vectors in the file <code>momemta/Types.h</code></p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>MoMEMta checks that your inputs are physical, i.e. have non-negative energy and mass. Due e.g. to machine precision issues, it is possible your inputs have slightly negative masses without you noticing it. However, MoMEMta can produce nonsensical output or even crash in this case (<em>garbage in, garbage out</em>). It's up to the user to correct the inputs in those cases.</p>
+</div>
+<p>The function <code>computeWeights()</code> starts the Monte-Carlo integration: the integrand function is called a large number of times, each time passing as input a phase-space point vector (where the length of the vector is the dimensionality of the integrated phase-space) with elements between 0 and 1, and returning as output the integrated function evaluated on this point.</p>
+<p><code>computeWeights()</code> returns a vector of pairs (weight, uncertainty). In most cases, this vector will contain only one entry, but MoMEMta allows the possibility to define <em>vector</em> integrands, i.e. integrate multi-valued functions, and return a weight and uncertainty for each component.</p>
+<h2 id="python-bindings">Python bindings<a class="headerlink" href="#python-bindings" title="Permanent link">&para;</a></h2>
+<p>Calling MoMEMta from python is also possible, provided the python bindings have been built (see the <a href="../../getting-started/#build-options">build options</a>). If you have not installed MoMEMta system-wide but in a user-defined directory (say <code>MOMEMTA_DIR</code>), you should make sure the two following conditions are satisfied:</p>
+<ul>
+<li><code>$MOMEMTA_DIR/lib[64]/pythonX/site-packages/</code> (exact path depends on your system) should be in your <code>PYTHONPATH</code></li>
+<li><code>$MOMEMTA_DIR/lib/</code> should be in your <code>LD_LIBRARY_PATH</code></li>
+</ul>
+<p>Then, you might call MoMEMta from your python analysis script in this manner:</p>
+<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">momemta</span>
+
+<span class="c1"># Restrict logging to &quot;error&quot; level</span>
+<span class="n">momemta</span><span class="o">.</span><span class="n">set_log_level</span><span class="p">(</span><span class="n">momemta</span><span class="o">.</span><span class="n">log_level</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
+
+<span class="n">momemta_cfg</span> <span class="o">=</span> <span class="n">momemta</span><span class="o">.</span><span class="n">ConfigurationReader</span><span class="p">(</span><span class="s2">&quot;path_to_config.lua&quot;</span><span class="p">)</span>
+<span class="n">momemta_computer</span> <span class="o">=</span> <span class="n">momemta</span><span class="o">.</span><span class="n">MoMEMta</span><span class="p">(</span><span class="n">momemta_cfg</span><span class="o">.</span><span class="n">freeze</span><span class="p">())</span>
+
+<span class="c1"># px, py, pz, E</span>
+<span class="n">p1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+<span class="n">p2</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+
+<span class="c1">## Using ROOT 4-vectors is also possible</span>
+<span class="c1"># import ROOT</span>
+<span class="c1"># LorentzVector = ROOT.Math.LorentzVector(ROOT.Math.PxPyPzE4D(&quot;double&quot;))</span>
+<span class="c1"># p1 = LorentzVector(10, 20, 30, 200)</span>
+<span class="c1"># p2 = LorentzVector(-10, 20, -30, 200)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">momemta_computer</span><span class="o">.</span><span class="n">computeWeights</span><span class="p">([</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Weight: {} +- {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+
+
+<p>More information about the Python bindings can be found in the <a href="https://momemta.github.io/MoMEMta/dev/group__Python.html">technical documentation</a>.</p>
                 
                   
                 
@@ -495,7 +600,9 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-6b599127bc.js"></script>
+      <script src="../../assets/javascripts/application-6940329b9f.js"></script>
+      
+      
       <script>app.initialize({url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

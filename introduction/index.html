@@ -5,6 +5,7 @@
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Modular Matrix Element Method implementation">
       
@@ -17,7 +18,7 @@
       
         <link rel="shortcut icon" href="../favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.1">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.1">
     
     
       
@@ -25,12 +26,12 @@
       
     
     
-      <script src="../assets/javascripts/modernizr-56ade86843.js"></script>
+      <script src="../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application-4d0d3f2fbf.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application-bfecc7305d.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-f78e5cb881.palette.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-02c2a4388f.palette.css">
       
     
     
@@ -45,6 +46,8 @@
     
     
       <link rel="stylesheet" href="../stylesheets/base16-eighties.dark.css">
+    
+      <link rel="stylesheet" href="../stylesheets/momemta.css">
     
     
   </head>
@@ -93,17 +96,17 @@
         
           <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
-<div class="md-search" data-md-component="search">
+<div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -115,9 +118,9 @@
 </div>
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             
 
 
@@ -137,9 +140,9 @@
     </div>
   </a>
 
-          
+          </div>
         </div>
-      </div>
+      
     </div>
   </nav>
 </header>
@@ -345,6 +348,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../in-depth/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../in-depth/new-module/" title="Adding a new module" class="md-nav__link">
+      Adding a new module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../in-depth/validation/" title="Validation" class="md-nav__link">
       Validation
     </a>
@@ -456,7 +483,16 @@
 <p>However, computing an integral like (<script type="math/tex">\ref{MEM}</script>) is a difficult numerical problem, due to the presence of sharp peaks in the integrand (propagators in the matrix element, transfer functions on angles and energies). Solving it in a reasonable amout of time requires the use of both adaptive Monte-Carlo integration algorithms <em>and</em> smart phase-space parametrisations.</p>
 <h2 id="momemta">MoMEMta<a class="headerlink" href="#momemta" title="Permanent link">&para;</a></h2>
 <p>MoMEMta is a modular C++ framework designed with the aim to allow a quick and efficient computation of weights under a large number of theoretical hypotheses, while remaining easily configurable by the user, enabling easy interfacing with existing analysis workflows.</p>
-<p>The modularity of MoMEMta consists of configuring the integrand of (<script type="math/tex">\ref{MEM}</script>) by linking modules together. A module is responsible for a small part of the computation: transfer functions, phase-space parametrisation, matrix element, …, each module’s output being fed to other modules as input. This configuration is realised by the user through a file written in the Lua scripting language. The integration is then carried out by MoMEMta using the Vegas algorithm as implemented in the Cuba library.</p>
+<p>The modularity of MoMEMta consists in configuring the integrand of (<script type="math/tex">\ref{MEM}</script>) by linking modules together. A module is responsible for a small part of the computation: transfer functions, phase-space parametrisation, matrix element, …, each module’s output being fed to other modules as input. This configuration is realised by the user through a file written in the Lua scripting language. The integration is then carried out by MoMEMta using Monte-Carlo algorithms (such as Vegas) as implemented in the Cuba library. MoMEMta ships modules convering most needs, but it is possible for the user to write additional modules to perform specific tasks.</p>
+<p>It should be noted that MoMEMta provides dedicated phase-space parametrisations especially suited for the computation of MEM integrals, greatly improving the speed of the calculations compared to a naive approach. The philosophy of these parametrisations is mostly based on results described in <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>, with a few additions. </p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><a href="http://arxiv.org/pdf/1007.3300v2.pdf">Pierre Artoisenet, Vincent Lemaitre, Fabio Maltoni and Olivier Mattelaer, <em>“Automation of the matrix element reweighting method”</em>, JHEP <em>12</em> (2010) <em>068</em>, p. 17</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
                 
                   
                 
@@ -542,7 +578,9 @@
       
     </div>
     
-      <script src="../assets/javascripts/application-6b599127bc.js"></script>
+      <script src="../assets/javascripts/application-6940329b9f.js"></script>
+      
+      
       <script>app.initialize({url:{base:".."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

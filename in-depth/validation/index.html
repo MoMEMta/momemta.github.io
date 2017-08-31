@@ -5,6 +5,7 @@
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Modular Matrix Element Method implementation">
       
@@ -17,7 +18,7 @@
       
         <link rel="shortcut icon" href="../../favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.1">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.1">
     
     
       
@@ -25,12 +26,12 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-56ade86843.js"></script>
+      <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application-4d0d3f2fbf.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-f78e5cb881.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-02c2a4388f.palette.css">
       
     
     
@@ -45,6 +46,8 @@
     
     
       <link rel="stylesheet" href="../../stylesheets/base16-eighties.dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/momemta.css">
     
     
   </head>
@@ -97,17 +100,17 @@
         
           <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
-<div class="md-search" data-md-component="search">
+<div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -119,9 +122,9 @@
 </div>
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             
 
 
@@ -141,9 +144,9 @@
     </div>
   </a>
 
-          
+          </div>
         </div>
-      </div>
+      
     </div>
   </nav>
 </header>
@@ -306,6 +309,30 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../new-module/" title="Adding a new module" class="md-nav__link">
+      Adding a new module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -335,9 +362,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#block-a" title="Block A" class="md-nav__link">
+    Block A
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#block-b" title="Block B" class="md-nav__link">
     Block B
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section_1" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume_1" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -350,7 +424,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phase-space-volume" title="Phase-space volume" class="md-nav__link">
+  <a href="#phase-space-volume_2" title="Phase-space volume" class="md-nav__link">
     Phase-space volume
   </a>
   
@@ -370,14 +444,68 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cross-section" title="Cross-section" class="md-nav__link">
+  <a href="#cross-section_2" title="Cross-section" class="md-nav__link">
     Cross-section
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-space-volume_1" title="Phase-space volume" class="md-nav__link">
+  <a href="#phase-space-volume_3" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-g" title="Block G" class="md-nav__link">
+    Block G
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section_3" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume_4" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secondary-block-cd" title="Secondary Block C/D" class="md-nav__link">
+    Secondary Block C/D
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section_4" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume_5" title="Phase-space volume" class="md-nav__link">
     Phase-space volume
   </a>
   
@@ -437,9 +565,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#block-a" title="Block A" class="md-nav__link">
+    Block A
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#block-b" title="Block B" class="md-nav__link">
     Block B
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section_1" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume_1" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -452,7 +627,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phase-space-volume" title="Phase-space volume" class="md-nav__link">
+  <a href="#phase-space-volume_2" title="Phase-space volume" class="md-nav__link">
     Phase-space volume
   </a>
   
@@ -472,14 +647,68 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cross-section" title="Cross-section" class="md-nav__link">
+  <a href="#cross-section_2" title="Cross-section" class="md-nav__link">
     Cross-section
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-space-volume_1" title="Phase-space volume" class="md-nav__link">
+  <a href="#phase-space-volume_3" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-g" title="Block G" class="md-nav__link">
+    Block G
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section_3" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume_4" title="Phase-space volume" class="md-nav__link">
+    Phase-space volume
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#secondary-block-cd" title="Secondary Block C/D" class="md-nav__link">
+    Secondary Block C/D
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-section_4" title="Cross-section" class="md-nav__link">
+    Cross-section
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-space-volume_5" title="Phase-space volume" class="md-nav__link">
     Phase-space volume
   </a>
   
@@ -508,51 +737,115 @@
                 
                 
                 <h1 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h1>
-<p>The main blocks responsible for the change of variables are validated using two differents method:</p>
+<p>The phase-space parametrisations in terms of blocks are validated using two differents methods:</p>
 <ul>
-<li><strong>Computation of the cross-section</strong>: the block is used to compute the cross-section of a given process. The result is then compared to the cross-section computed using <code>MadGraph</code> for the same process.</li>
-<li><strong>Computation of the phase-space volume</strong>: only the phase-space density is integrated (no PDF or matrix element), and the result is compared to a hand-made calculation.</li>
+<li><strong>Computation of a cross-section</strong>: the block is used to compute the cross-section of a given process. The result is then compared to the cross-section computed using MadGraph<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> for the same process.</li>
+<li><strong>Computation of a phase-space volume</strong>: only the phase-space density is integrated (no PDF or matrix element), and the result is compared with the analytical result for production of <script type="math/tex">n</script> massless particles at a hadronic centre-of-mass energy of <script type="math/tex">\sqrt{s}</script> GeV: 
+  <script type="math/tex; mode=display">
+    V(\sqrt{s}, n) = \frac{s^{n-3}}{2^{4(n-1)} \pi^{2n-3} (n-1) (n-2)^2 ((n-2)!)^2}
+  </script>
+</li>
 </ul>
-<h2 id="block-b">Block B<a class="headerlink" href="#block-b" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This block is included in MoMEMta, but is not yet validated. Be careful if you decide to use it.</p>
-</div>
-<h2 id="block-d">Block D<a class="headerlink" href="#block-d" title="Permanent link">&para;</a></h2>
-<p>The process is <script type="math/tex">pp \rightarrow t\bar{t}</script> fully-leptonic</p>
+<p>In both cases, MoMEMta's phase-space parametrisations are not efficient for the problem, but by increasing the number of integrand evaluations to a very large number, sufficient precision can be reached nonetheless.</p>
+<h2 id="block-a">Block A<a class="headerlink" href="#block-a" title="Permanent link">&para;</a></h2>
+<h3 id="cross-section">Cross-section<a class="headerlink" href="#cross-section" title="Permanent link">&para;</a></h3>
+<p>The process used is <script type="math/tex">pp \rightarrow W^+W^- \rightarrow \mu^+\mu^-\nu\bar{\nu}</script>
+</p>
 <ul>
-<li><code>MadGraph</code> cross-section: <script type="math/tex">6.73 \pm 0.02</script> pb</li>
-<li>MoMEMta cross-section: <script type="math/tex">6.69 \pm 0.03</script> pb</li>
+<li>MadGraph cross-section: <script type="math/tex">0.866(5)</script> pb</li>
+<li>MoMEMta cross-section: </li>
 </ul>
 <h3 id="phase-space-volume">Phase-space volume<a class="headerlink" href="#phase-space-volume" title="Permanent link">&para;</a></h3>
+<p>Volume computed: production of 3 massless particles at <script type="math/tex">\sqrt{s} = 1</script> TeV</p>
 <ul>
-<li>Theoritical phase-space volume<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> : <script type="math/tex">694</script>
-<script type="math/tex">\text{GeV}^6</script>
+<li>Theoretical phase-space volume: <script type="math/tex">6.3 \cdot 10^{-15}</script>
 </li>
-<li>MoMEMta phase-space volume: <script type="math/tex">694.993 \pm 3.93901\ \text{GeV}^6</script>
+<li>MoMEMta phase-space volume: <script type="math/tex">6.299(6) \cdot 10^{-15}</script>
+</li>
+</ul>
+<h2 id="block-b">Block B<a class="headerlink" href="#block-b" title="Permanent link">&para;</a></h2>
+<h3 id="cross-section_1">Cross-section<a class="headerlink" href="#cross-section_1" title="Permanent link">&para;</a></h3>
+<p>The process used is <script type="math/tex">pp \rightarrow W^+W^- \rightarrow \mu^+\mu^-\nu\bar{\nu}</script>
+</p>
+<ul>
+<li>MadGraph cross-section: <script type="math/tex">0.866(5)</script> pb</li>
+<li>MoMEMta cross-section: <script type="math/tex">0.868(8)</script> pb</li>
+</ul>
+<h3 id="phase-space-volume_1">Phase-space volume<a class="headerlink" href="#phase-space-volume_1" title="Permanent link">&para;</a></h3>
+<p>Volume computed: production of 3 massless particles at <script type="math/tex">\sqrt{s} = 1</script> TeV</p>
+<ul>
+<li>Theoretical phase-space volume: <script type="math/tex">6.3 \cdot 10^{-15}</script>
+</li>
+<li>MoMEMta phase-space volume: <script type="math/tex">6.297(6) \cdot 10^{-15}</script>
+</li>
+</ul>
+<h2 id="block-d">Block D<a class="headerlink" href="#block-d" title="Permanent link">&para;</a></h2>
+<p>The process used is <script type="math/tex">pp \rightarrow t\bar{t}</script> fully-leptonic</p>
+<ul>
+<li>MadGraph cross-section: <script type="math/tex">6.73(2)</script> pb</li>
+<li>MoMEMta cross-section: <script type="math/tex">6.69(3)</script> pb</li>
+</ul>
+<h3 id="phase-space-volume_2">Phase-space volume<a class="headerlink" href="#phase-space-volume_2" title="Permanent link">&para;</a></h3>
+<p>Volume computed: production of 6 massless particles at <script type="math/tex">\sqrt{s} = 1</script> TeV</p>
+<ul>
+<li>Theoretical phase-space volume : <script type="math/tex">694 \text{GeV}^6</script>
+</li>
+<li>MoMEMta phase-space volume: <script type="math/tex">695(4) \text{GeV}^6</script>
 </li>
 </ul>
 <h2 id="block-f">Block F<a class="headerlink" href="#block-f" title="Permanent link">&para;</a></h2>
-<h3 id="cross-section">Cross-section<a class="headerlink" href="#cross-section" title="Permanent link">&para;</a></h3>
-<p>The process is <script type="math/tex">pp \rightarrow W^+W^- \rightarrow \mu^+\mu^-\nu\bar{\nu}</script>
+<h3 id="cross-section_2">Cross-section<a class="headerlink" href="#cross-section_2" title="Permanent link">&para;</a></h3>
+<p>The process used is <script type="math/tex">pp \rightarrow W^+W^- \rightarrow \mu^+\mu^-\nu\bar{\nu}</script>
 </p>
 <ul>
-<li><code>MadGraph</code> cross-section: <script type="math/tex">0.8666 \pm 0.0053</script> pb</li>
-<li>MoMEMta cross-section: <script type="math/tex">0.8636 \pm 0.00433\,10^{-3}</script> pb</li>
+<li>MadGraph cross-section: <script type="math/tex">0.866(5)</script> pb</li>
+<li>MoMEMta cross-section: <script type="math/tex">0.864(4)</script> pb</li>
 </ul>
-<h3 id="phase-space-volume_1">Phase-space volume<a class="headerlink" href="#phase-space-volume_1" title="Permanent link">&para;</a></h3>
+<h3 id="phase-space-volume_3">Phase-space volume<a class="headerlink" href="#phase-space-volume_3" title="Permanent link">&para;</a></h3>
+<p>Volume computed: production of 4 massless particles at <script type="math/tex">\sqrt{s} = 1</script> TeV</p>
 <ul>
-<li>Theoritical phase-space volume<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> : <script type="math/tex">0.0166</script>
+<li>Theoretical phase-space volume: <script type="math/tex">0.0166 \text{GeV}^2</script>
+</li>
+<li>MoMEMta phase-space volume: <script type="math/tex">0.0166(3) \text{GeV}^2</script>
+</li>
+</ul>
+<h2 id="block-g">Block G<a class="headerlink" href="#block-g" title="Permanent link">&para;</a></h2>
+<h3 id="cross-section_3">Cross-section<a class="headerlink" href="#cross-section_3" title="Permanent link">&para;</a></h3>
+<p>The process used is <script type="math/tex">pp \rightarrow W^+W^- \rightarrow \mu^+\mu^-\nu\bar{\nu}</script>
+</p>
+<ul>
+<li>MadGraph cross-section: <script type="math/tex">0.866(5)</script> pb</li>
+<li>MoMEMta cross-section: <script type="math/tex">0.864(4)</script> pb</li>
+</ul>
+<h3 id="phase-space-volume_4">Phase-space volume<a class="headerlink" href="#phase-space-volume_4" title="Permanent link">&para;</a></h3>
+<p>Volume computed: production of 4 massless particles at <script type="math/tex">\sqrt{s} = 1</script> TeV</p>
+<ul>
+<li>Theoretical phase-space volume: <script type="math/tex">0.0166 \text{GeV}^2</script>
+</li>
+<li>MoMEMta phase-space volume: <script type="math/tex">0.01659(3) \text{GeV}^2</script>
+</li>
+</ul>
+<h2 id="secondary-block-cd">Secondary Block C/D<a class="headerlink" href="#secondary-block-cd" title="Permanent link">&para;</a></h2>
+<h3 id="cross-section_4">Cross-section<a class="headerlink" href="#cross-section_4" title="Permanent link">&para;</a></h3>
+<p>The process used is <script type="math/tex">pp \rightarrow W^+W^- \rightarrow \mu^+\mu^-\nu\bar{\nu}</script> <br/> Main block used for computation: B</p>
+<ul>
+<li>MadGraph cross-section: <script type="math/tex">0.866(5)</script> pb</li>
+<li>MoMEMta cross-section: <script type="math/tex">0.868(8)</script> pb</li>
+</ul>
+<h3 id="phase-space-volume_5">Phase-space volume<a class="headerlink" href="#phase-space-volume_5" title="Permanent link">&para;</a></h3>
+<p>Volume computed: production of 4 massless particles at <script type="math/tex">\sqrt{s} = 1</script> TeV <br/> Main block used for computation: A</p>
+<ul>
+<li>Theoretical phase-space volume: <script type="math/tex">0.0166</script>
 <script type="math/tex">\text{GeV}^2</script>
 </li>
-<li>MoMEMta phase-space volume: <script type="math/tex">0.0166 \pm 2.6985\,10^{-5}\ \text{GeV}^2</script>
+<li>MoMEMta phase-space volume: <script type="math/tex">0.01663(6) \text{GeV}^2</script>
 </li>
 </ul>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p><a href="http://arxiv.org/pdf/1007.3300v2.pdf">Pierre Artoisenet, Vincent Lemaitre, Fabio Maltoni and Olivier Mattelaer, <em>“Automation of the matrix element reweighting method”</em>, JHEP <em>12</em> (2010) page 17</a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p><a href="https://arxiv.org/pdf/1405.0301v2">J. Alwall et al., <em>“The automated computation of tree-level and next-to-leading order differential cross sections, and their matching to parton shower simulations”</em>, JHEP <em>07</em> (2014) <em>079</em></a>&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -574,7 +867,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../configuration-file/" title="Configuration file" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../new-module/" title="Adding a new module" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -583,7 +876,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Configuration file
+                Adding a new module
               </span>
             </div>
           </a>
@@ -641,7 +934,9 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application-6b599127bc.js"></script>
+      <script src="../../assets/javascripts/application-6940329b9f.js"></script>
+      
+      
       <script>app.initialize({url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

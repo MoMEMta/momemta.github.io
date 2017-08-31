@@ -5,6 +5,7 @@
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
       
         <meta name="description" content="Modular Matrix Element Method implementation">
       
@@ -17,7 +18,7 @@
       
         <link rel="shortcut icon" href="./favicon.png">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.6.1">
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.1">
     
     
       
@@ -25,12 +26,12 @@
       
     
     
-      <script src="./assets/javascripts/modernizr-56ade86843.js"></script>
+      <script src="./assets/javascripts/modernizr-1df76c4e58.js"></script>
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application-4d0d3f2fbf.css">
+      <link rel="stylesheet" href="./assets/stylesheets/application-bfecc7305d.css">
       
-        <link rel="stylesheet" href="./assets/stylesheets/application-f78e5cb881.palette.css">
+        <link rel="stylesheet" href="./assets/stylesheets/application-02c2a4388f.palette.css">
       
     
     
@@ -45,6 +46,8 @@
     
     
       <link rel="stylesheet" href="./stylesheets/base16-eighties.dark.css">
+    
+      <link rel="stylesheet" href="./stylesheets/momemta.css">
     
     
   </head>
@@ -93,17 +96,17 @@
         
           <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
-<div class="md-search" data-md-component="search">
+<div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="search"></label>
   <div class="md-search__inner">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
       <label class="md-icon md-search__icon" for="search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
           <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
             Type to start searching
           </div>
@@ -115,9 +118,9 @@
 </div>
         
       </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <div class="md-header-nav__source">
-          
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
             
 
 
@@ -137,9 +140,9 @@
     </div>
   </a>
 
-          
+          </div>
         </div>
-      </div>
+      
     </div>
   </nav>
 </header>
@@ -345,6 +348,30 @@
 
 
   <li class="md-nav__item">
+    <a href="in-depth/parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="in-depth/new-module/" title="Adding a new module" class="md-nav__link">
+      Adding a new module
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="in-depth/validation/" title="Validation" class="md-nav__link">
       Validation
     </a>
@@ -423,7 +450,7 @@
                 
                 <h1 id="the-momemta-project">The MoMEMta project<a class="headerlink" href="#the-momemta-project" title="Permanent link">&para;</a></h1>
 <p><a href=https://github.com/MoMEMta/MoMEMta><img alt="MoMEMta logo" src="images/full_logo.png" style="display:block; margin: auto" /></a></p>
-<p><strong>MoMEMta</strong> is a C++ software package to compute Matrix Element weights. Designed in a modular way, it covers the needs of experimental analysis workflows at the LHC. MoMEMta provides working examples for the most common final states (<script type="math/tex">\text{t}\bar{\text{t}}</script>, WW, …). If you are an expert user, be prepared to feel the freedom of configuring your MEM computation at all levels.</p>
+<p><strong>MoMEMta</strong> is a C++ software package to compute Matrix Element weights. Designed in a modular way, it covers the needs of experimental analysis workflows at the LHC. MoMEMta provides working examples for some common final states (<script type="math/tex">\text{t}\bar{\text{t}}</script>, WW, …). If you are an expert user, be prepared to feel the freedom of configuring your MEM computation at all levels!</p>
 <p>MoMEMta is based on:</p>
 <ul>
 <li>C++, <a href="https://root.cern.ch/">ROOT</a>, <a href="http://www.lua.org/">Lua</a> scripting language</li>
@@ -435,6 +462,7 @@
 <h2 id="our-team">Our team<a class="headerlink" href="#our-team" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Sébastien Brochet</li>
+<li>Brieuc François</li>
 <li>Alessia Saggio</li>
 <li>Miguel Vidal</li>
 <li>Sébastien Wertz</li>
@@ -522,7 +550,9 @@
       
     </div>
     
-      <script src="./assets/javascripts/application-6b599127bc.js"></script>
+      <script src="./assets/javascripts/application-6940329b9f.js"></script>
+      
+      
       <script>app.initialize({url:{base:"."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

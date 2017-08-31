@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Modular Matrix Element Method implementation">
+      
+      
+        <link rel="canonical" href="https://momemta.github.io/in-depth/new-module/">
+      
+      
+        <meta name="author" content="The MoMEMta team">
+      
+      
+        <link rel="shortcut icon" href="../../favicon.png">
+      
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.8.1">
+    
+    
+      
+        <title>Adding a new module - MoMEMta</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-1df76c4e58.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-bfecc7305d.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-02c2a4388f.palette.css">
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/base16-eighties.dark.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/momemta.css">
+    
+    
+  </head>
+  
+  
+  
+  
+    <body data-md-color-primary="blue-grey" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <a href="https://momemta.github.io" title="MoMEMta" class="md-logo md-header-nav__button">
+            <img src="../../images/logo.svg" width="24" height="24">
+          </a>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  In depth
+                </span>
+              
+            
+            Adding a new module
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/MoMEMta/MoMEMta" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <!--
+  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Main navigation -->
+<nav class="md-nav md-nav--primary" data-md-level="0">
+
+  <!-- Site title -->
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    
+      <i class="md-logo md-nav__button">
+        <img src="../../images/logo.svg" />
+      </i>
+    
+    MoMEMta
+  </label>
+
+  <!-- Repository containing source -->
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/MoMEMta/MoMEMta" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+
+  <!-- Render item list -->
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The MoMEMta project" class="md-nav__link">
+      The MoMEMta project
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../introduction/" title="What is MoMEMta?" class="md-nav__link">
+      What is MoMEMta?
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      In depth
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        In depth
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../calling-momemta/" title="Calling MoMEMta" class="md-nav__link">
+      Calling MoMEMta
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configuration-file/" title="Configuration file" class="md-nav__link">
+      Configuration file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../parameters/" title="Parameters" class="md-nav__link">
+      Parameters
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Adding a new module
+      </label>
+    
+    <a href="./" title="Adding a new module" class="md-nav__link md-nav__link--active">
+      Adding a new module
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-modules-interface" title="Defining the module's interface" class="md-nav__link">
+    Defining the module's interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-the-module" title="Registering the module" class="md-nav__link">
+    Registering the module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-module" title="Loading the module" class="md-nav__link">
+    Loading the module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-advanced-features-into-your-module" title="Using advanced features into your module" class="md-nav__link">
+    Using advanced features into your module
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputs-and-outputs" title="Inputs and outputs" class="md-nav__link">
+    Inputs and outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-registration" title="Module registration" class="md-nav__link">
+    Module registration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attributes" title="Attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-types" title="Supported types" class="md-nav__link">
+    Supported types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputs-and-outputs_1" title="Inputs and outputs" class="md-nav__link">
+    Inputs and outputs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" title="More" class="md-nav__link">
+    More
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../validation/" title="Validation" class="md-nav__link">
+      Validation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../changelog/" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-modules-interface" title="Defining the module's interface" class="md-nav__link">
+    Defining the module's interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#registering-the-module" title="Registering the module" class="md-nav__link">
+    Registering the module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-module" title="Loading the module" class="md-nav__link">
+    Loading the module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-advanced-features-into-your-module" title="Using advanced features into your module" class="md-nav__link">
+    Using advanced features into your module
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputs-and-outputs" title="Inputs and outputs" class="md-nav__link">
+    Inputs and outputs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module-registration" title="Module registration" class="md-nav__link">
+    Module registration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#attributes" title="Attributes" class="md-nav__link">
+    Attributes
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-types" title="Supported types" class="md-nav__link">
+    Supported types
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inputs-and-outputs_1" title="Inputs and outputs" class="md-nav__link">
+    Inputs and outputs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more" title="More" class="md-nav__link">
+    More
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/MoMEMta/MoMEMta/edit/master/docs/in-depth/new-module.md" title="Edit this page" class="md-icon md-content__icon">edit</a>
+                
+                
+                <h1 id="adding-a-new-module">Adding a new module<a class="headerlink" href="#adding-a-new-module" title="Permanent link">&para;</a></h1>
+<p>You can easily extend MoMEMta by adding new modules to perform operations not supported by the base modules.</p>
+<h2 id="defining-the-modules-interface">Defining the module's interface<a class="headerlink" href="#defining-the-modules-interface" title="Permanent link">&para;</a></h2>
+<p>You declare a new module in MoMEMta by subclassing the <a href="https://momemta.github.io/MoMEMta/dev/classModule.html">Module class</a>, and then registering the new module into the MoMEMta system.</p>
+<p>Let's suppose you want to declare a new module printing <code>Hello world!</code> at each step of the integration. You first need to include the right header:</p>
+<div class="codehilite"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;momemta/Module.h&gt;</span><span class="cp"></span>
+</pre></div>
+
+
+<p>and then to subclass the <code>Module</code> class:</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldModule</span><span class="o">:</span> <span class="k">public</span> <span class="n">Module</span> <span class="p">{</span>
+
+<span class="p">};</span>
+</pre></div>
+
+
+<p>If you want your new module to be useful, you'll want to override some specific functions, starting by the constructor and the <a href="https://momemta.github.io/MoMEMta/dev/classModule.html#a43c0b7c70e9dd8b0cf6c78aa5052eeee">work</a> function:</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldModule</span><span class="o">:</span> <span class="k">public</span> <span class="n">Module</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">HelloWorldModule</span><span class="p">(</span><span class="n">PoolPtr</span> <span class="n">pool</span><span class="p">,</span> <span class="k">const</span> <span class="n">ParameterSet</span><span class="o">&amp;</span> <span class="n">parameters</span><span class="p">)</span><span class="o">:</span> <span class="n">Module</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">parameters</span><span class="p">.</span><span class="n">getModuleName</span><span class="p">())</span> <span class="p">{</span> <span class="p">}</span>
+
+  <span class="k">virtual</span> <span class="n">Status</span> <span class="n">work</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello world!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">Status</span><span class="o">::</span><span class="n">OK</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>The <code>work</code> function is called by MoMEMta each time the integrand needs to be evaluated (thousand times per integration). With this code, our module would only output the string <code>Hello world!</code> and not produce anything useful, but it's fine, that's what we wanted! The only remaining thing is to register the new module into the system.</p>
+<h2 id="registering-the-module">Registering the module<a class="headerlink" href="#registering-the-module" title="Permanent link">&para;</a></h2>
+<p>Before being available to MoMEMta, a module must be registered into the system. This is done using the <code>REGISTER_MODULE</code> macro. After the declaration of your module, simply add:</p>
+<div class="codehilite"><pre><span></span><span class="n">REGISTER_MODULE</span><span class="p">(</span><span class="n">HelloWorldModule</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Sticky</span><span class="p">();</span>
+</pre></div>
+
+
+<p>Because your module does not produce any output, MoMEMta will automatically remove it from the computation graph, since it does not contribute in any way to the final integrand value. You can prevent this behaviour by registering your module as <code>sticky</code>: a <code>sticky</code> module is not removed from the computation graph if it's found to not contribute.</p>
+<h2 id="loading-the-module">Loading the module<a class="headerlink" href="#loading-the-module" title="Permanent link">&para;</a></h2>
+<p>So, you have successfully defined a new module and registered it with the system. In order to use it during the computation of the weight, you first have to <em>load</em> the shared library where your module is.</p>
+<p>Let's suppose your module is contained into <code>libhelloworldmodule.so</code>. In the lua configuration file, you need to first instruct MoMEMta to load this library to gain access to the new module:</p>
+<div class="codehilite"><pre><span></span><span class="n">load_modules</span><span class="p">(</span><span class="s1">&#39;libhelloworldmodule.so&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can now use your new module as you would do for a built-in module:</p>
+<div class="codehilite"><pre><span></span><span class="n">HelloWorldModule</span><span class="p">.</span><span class="n">hello</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+
+
+<h2 id="using-advanced-features-into-your-module">Using advanced features into your module<a class="headerlink" href="#using-advanced-features-into-your-module" title="Permanent link">&para;</a></h2>
+<p>The module we built before is nice, but not very useful. Ideally, our module wants to gather some input data, transform them and output new data that in turn can be used by other modules. So we need two features: a way to get <strong>inputs</strong> and a way to produce <strong>outputs</strong>.</p>
+<h3 id="inputs-and-outputs">Inputs and outputs<a class="headerlink" href="#inputs-and-outputs" title="Permanent link">&para;</a></h3>
+<p>A module retrieves its inputs from the memory pool. The only moment the pool is accessible is during the construction of the module (see the first argument of the constructor). The <a href="https://momemta.github.io/MoMEMta/dev/classPool.html"><code>Pool</code> class</a> has a <code>get</code> method you must use to obtain a pointer to the input. The <code>get</code> method accepts only a single argument, the <code>InputTag</code> of the input to grab.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Inputs can only be accessed inside the <code>work</code> method. Trying to access to an input in another method will result in an undefined behaviour.</p>
+</div>
+<p>Let's edit our <code>Hello, world!</code> module to retrieve an input:</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldModule</span><span class="o">:</span> <span class="k">public</span> <span class="n">Module</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">HelloWorldModule</span><span class="p">(</span><span class="n">PoolPtr</span> <span class="n">pool</span><span class="p">,</span> <span class="k">const</span> <span class="n">ParameterSet</span><span class="o">&amp;</span> <span class="n">parameters</span><span class="p">)</span><span class="o">:</span> <span class="n">Module</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">parameters</span><span class="p">.</span><span class="n">getModuleName</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">input</span> <span class="o">=</span> <span class="n">pool</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">InputTag</span><span class="p">(</span><span class="s">&quot;module&quot;</span><span class="p">,</span> <span class="s">&quot;output&quot;</span><span class="p">));</span>
+
+    <span class="n">output</span> <span class="o">=</span> <span class="n">produce</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;my_output&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">virtual</span> <span class="n">Status</span> <span class="n">work</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello world!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Our input is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">input</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="o">*</span><span class="n">output</span> <span class="o">=</span> <span class="o">*</span><span class="n">input</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">Status</span><span class="o">::</span><span class="n">OK</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="n">Value</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">input</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">output</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>First addition registers an output named <code>my_output</code> for this module, of type <code>double</code>. The second addition sets the value of the output to be twice the input value.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h3>
+<p>In the above example, we hardcoded the <code>InputTag</code> used to retrieve the input. This is not a good practice, because you can't know when writing your module how the user will want to use your module and which output he wants to connect to your module. To overcome this, you can use the parameters (second argument of the constructor) to get data specified by the user inside the configuration file. In our example here, we can request the user to tell, inside the configuration, how he wants to connect our module by letting him specify the <code>InputTag</code> to use.</p>
+<p>Parameters are stored into a <a href="https://momemta.github.io/MoMEMta/dev/classParameterSet.html"><code>ParameterSet</code></a>, which is simply a dictionary of heterogeneous types. You can access values using the <code>get</code> function, specifying the name of the parameter you want.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only a subset of types are supported by <code>ParameterSet</code>. You can only store and retrieve <code>int64_t</code> (integers), <code>double</code> (floating point numbers), <code>bool</code>, <code>std::string</code>, <code>InputTag</code>, <code>ParameterSet</code>, as well as <code>std::vector</code> of any of the previous types.</p>
+</div>
+<p>We will modify our module to remove the hardcoded <code>InputTag</code> and require the user to pass it as a parameter:</p>
+<div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">HelloWorldModule</span><span class="o">:</span> <span class="k">public</span> <span class="n">Module</span> <span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">HelloWorldModule</span><span class="p">(</span><span class="n">PoolPtr</span> <span class="n">pool</span><span class="p">,</span> <span class="k">const</span> <span class="n">ParameterSet</span><span class="o">&amp;</span> <span class="n">parameters</span><span class="p">)</span><span class="o">:</span> <span class="n">Module</span><span class="p">(</span><span class="n">pool</span><span class="p">,</span> <span class="n">parameters</span><span class="p">.</span><span class="n">getModuleName</span><span class="p">())</span> <span class="p">{</span>
+<span class="hll">    <span class="n">InputTag</span> <span class="n">inputTag</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">get</span><span class="o">&lt;</span><span class="n">InputTag</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;which_input&quot;</span><span class="p">);</span>
+</span><span class="hll">    <span class="n">input</span> <span class="o">=</span> <span class="n">pool</span><span class="o">-&gt;</span><span class="n">get</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="n">inputTag</span><span class="p">);</span>
+</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">produce</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;my_output&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">virtual</span> <span class="n">Status</span> <span class="n">work</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello world!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Our input is: &quot;</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">input</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+    <span class="o">*</span><span class="n">output</span> <span class="o">=</span> <span class="o">*</span><span class="n">input</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">Status</span><span class="o">::</span><span class="n">OK</span><span class="p">;</span>
+  <span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+  <span class="n">Value</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">input</span><span class="p">;</span>
+
+  <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">output</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>You can now see it's a two-step process to retrieve an input:</p>
+<ol>
+<li>We retrieve the parameter <code>which_input</code> of type <code>InputTag</code>, specified by the user inside the configuration file.</li>
+<li>We use this <code>InputTag</code> to retrieve our input.</li>
+</ol>
+<p>On the configuration side, the user must now specify a value for the <code>which_input</code> parameter:</p>
+<div class="codehilite"><pre><span></span><span class="n">HelloWorldModule</span><span class="p">.</span><span class="n">hello</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">which_input</span> <span class="o">=</span> <span class="s2">&quot;module::output&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can provide a default value when retrieving an argument. This value will be returned if the parameter is not found in the set.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the <code>exists</code> method of <code>ParameterSet</code> to check if a given parameter exists.</p>
+</div>
+<h3 id="module-registration">Module registration<a class="headerlink" href="#module-registration" title="Permanent link">&para;</a></h3>
+<p>When using inputs, outputs or parameters in your modules, extra steps are needed during the registration to inform the system what are your module expectations.</p>
+<div class="codehilite"><pre><span></span><span class="n">REGISTER_MODULE</span><span class="p">(</span><span class="n">HelloWorldModule</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="s">&quot;which_input&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Output</span><span class="p">(</span><span class="s">&quot;output&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>The above declaration informs the system that your module has one input (<code>which_input</code>) and one output (<code>output</code>). MoMEMta now expects the user to specify a value for <code>which_input</code> when writing the configuration file, and, more specifically, this value must be an <code>InputTag</code>.</p>
+<h4 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link">&para;</a></h4>
+<p>Attributes are any parameters which are not inputs. They are used to pass parameters to the module, like for example the current center of mass energy, or the mass of a particle.</p>
+<p>You define an attribute when you register the module, by specifying its name and type using the <code>Attr</code> or <code>OptionalAttr</code> methods, which expect a spec of the form:</p>
+<div class="codehilite"><pre><span></span>&lt;name&gt;: &lt;type-expr&gt; = &lt;default&gt;
+</pre></div>
+
+
+<p>where <code>&lt;name&gt;</code> begins with a letter and can be composed of alphanumeric characters and underscores, and <code>&lt;type-expr&gt;</code>is a type expression of the form <a href="./#supported-types">described below</a>. An optional <code>&lt;default&gt;</code> value can also be specified. If it's the case, the attribute is automatically marked as optional.</p>
+<p>Let's imagine our module needs to know what's the mass of the top quark to work. We need to add a new attribute of type <code>double</code>:</p>
+<div class="codehilite"><pre><span></span><span class="n">REGISTER_MODULE</span><span class="p">(</span><span class="n">HelloWorldModule</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Attr</span><span class="p">(</span><span class="s">&quot;mass: double&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="s">&quot;which_input&quot;</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Output</span><span class="p">(</span><span class="s">&quot;output&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<h5 id="supported-types">Supported types<a class="headerlink" href="#supported-types" title="Permanent link">&para;</a></h5>
+<p>The following types are supported when registering a new attribute:</p>
+<ul>
+<li><code>int</code>: signed 64-bits integer</li>
+<li><code>double</code>: 64-bits floating point number</li>
+<li><code>string</code>: sequence of characters</li>
+<li><code>bool</code>: true or false</li>
+<li><code>pset</code>: a ParameterSet</li>
+<li><code>list(&lt;type&gt;)</code>: a list of any of the types above.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An <code>InputTag</code> attribute is an <em>input</em>, not an attribute. As a consequence, <code>InputTag</code> is <strong>not</strong> a valid type for an attribute.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>No check is currently performed to ensure only valid types are passed as attributes in the configuration file. Full support is planned for future release.</p>
+</div>
+<h4 id="inputs-and-outputs_1">Inputs and outputs<a class="headerlink" href="#inputs-and-outputs_1" title="Permanent link">&para;</a></h4>
+<p>Inputs and outputs are untyped. To register inputs, you can use the <code>Input</code> method. For an output, use the <code>Output</code> method. These methods expect a spec of the form:</p>
+<div class="codehilite"><pre><span></span>[&lt;attr&gt;/]*&lt;name&gt;
+</pre></div>
+
+
+<p><code>&lt;name&gt;</code> begins with a letter and can be composed of alphanumeric characters and underscores. In the case of inputs only, you can also describe where the <code>InputTag</code> must be fetched using <code>&lt;attr&gt;</code>. <code>&lt;attr&gt;</code> must refer to an existing attribute (defined with the <code>Attr</code> method) of type <code>pset</code>. More than one level of nesting is possible.</p>
+<p>Here's an example illustrating this feature:</p>
+<div class="codehilite"><pre><span></span><span class="n">REGISTER_MODULE</span><span class="p">(</span><span class="n">HelloWorldModule</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">Attr</span><span class="p">(</span><span class="s">&quot;mass: double&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="p">.</span><span class="n">Attr</span><span class="p">(</span><span class="s">&quot;data: pset&quot;</span><span class="p">)</span>
+</span>    <span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="s">&quot;first_input&quot;</span><span class="p">)</span>
+<span class="hll">    <span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="s">&quot;data/second_input&quot;</span><span class="p">)</span>
+</span>    <span class="p">.</span><span class="n">Output</span><span class="p">(</span><span class="s">&quot;output&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This imaginary module needs two inputs: <code>first_input</code> will be fetched from the main parameters, while <code>second_input</code> will be fetched from the <code>data</code> attribute. You can configure such module the following way:</p>
+<div class="codehilite"><pre><span></span><span class="n">HelloWorldModule</span><span class="p">.</span><span class="n">hello</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">mass</span> <span class="o">=</span> <span class="mf">173.0</span><span class="p">,</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">second_input</span> <span class="o">=</span> <span class="s2">&quot;module::second_output&quot;</span>
+  <span class="p">},</span>
+  <span class="n">first_input</span> <span class="o">=</span> <span class="s2">&quot;module::first_output&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="more">More<a class="headerlink" href="#more" title="Permanent link">&para;</a></h2>
+<p>The sources of the built-in modules are a good source of documentation too. Those can be found <a href="https://github.com/MoMEMta/MoMEMta/tree/master/modules">on our github repository</a></p>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../parameters/" title="Parameters" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Parameters
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../validation/" title="Validation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Validation
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2017 the MoMEMta team
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <a href="mailto:momemta-contact@cern.ch" title="Contact us" class="md-footer-social__link fa fa-envelope"></a>
+    
+    <a href="https://momemta.github.io/MoMEMta/" title="Technical documentation" class="md-footer-social__link fa fa-book"></a>
+    
+    <a href="https://trello.com/b/lQXfKafM/momemta-roadmap" title="Roadmap" class="md-footer-social__link fa fa-map"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-6940329b9f.js"></script>
+      
+      
+      <script>app.initialize({url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+    
+      
+      <script>!function(e,t,a,n,o,c,i){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,c=t.createElement(a),i=t.getElementsByTagName(a)[0],c.async=1,c.src=n,i.parentNode.insertBefore(c,i)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-78443359-1","momemta.github.io"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var t=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",t,e.href)})});var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})</script>
+      
+    
+  </body>
+</html>

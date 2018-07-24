@@ -61,5 +61,6 @@ pages:
     - 'Parameters': 'in-depth/parameters.md'
     - 'Adding a new module': 'in-depth/new-module.md'
     - 'Validation': 'in-depth/validation.md'
+    - 'Phase-space parameterisation': 'in-depth/blocks-parametrisation.md'
   - 'Release notes': 'changelog.md'
   #- 'Acknowledgements': 'acknowledgement.md'

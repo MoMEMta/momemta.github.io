@@ -1,70 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
     <url>
      <loc>https://momemta.github.io/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>https://momemta.github.io/introduction/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>https://momemta.github.io/getting-started/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
-        
     <url>
      <loc>https://momemta.github.io/in-depth/calling-momemta/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://momemta.github.io/in-depth/configuration-file/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://momemta.github.io/in-depth/parameters/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://momemta.github.io/in-depth/new-module/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://momemta.github.io/in-depth/validation/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
     <url>
      <loc>https://momemta.github.io/changelog/</loc>
-     <lastmod>2018-05-22</lastmod>
+     <lastmod>2018-10-10</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
 </urlset>
